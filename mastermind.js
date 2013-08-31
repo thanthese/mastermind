@@ -36,7 +36,7 @@ Array.prototype.clone = function() {
 };
 
 Array.prototype.max = function() {
-  return Math.max.apply(null, this);
+    return Math.max.apply(null, this);
 };
 
 function Pips(black, white) {
@@ -97,7 +97,7 @@ function eliminateCandidates(candidates, guess, pips) {
 
 function prettyCandidates(candidates) {
     return candidates
-        .map(function(c) { return prettyCandidate(c); })
+        .map(prettyCandidate)
         .join(" ");
 }
 
@@ -218,6 +218,4 @@ function runAllTests() {
 // solve(['s', 'p', 's', 'r']);
 // solve(['p', 'r', 'y', 's']);
 // solve(['y', 'y', 'y', 'y']);
-// solve(['s', 'y', 's', 'y']);
-
-solve(['b', 'b', 'b', 'b']);
+solve(['s', 'y', 's', 'y']);
