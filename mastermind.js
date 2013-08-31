@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// node boilerplate
+// node boilerplate -- largely unnecessary
 var http = require("http");
 http.createServer(function(req, res) {
     res.end("text");
