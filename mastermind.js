@@ -1,24 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-// node boilerplate
-//
-// Not technically necessary, but cloud 9 crashes without it.
-
-var http = require("http");
-http.createServer(function(req, res) {
-    res.end("text");
-}).listen(process.env.PORT, process.env.IP);
-
-///////////////////////////////////////////////////////////////////////////////
-// main logic
-
-// You can change the number of colors. Six is the original standard,
-// and seven is a fun addition.
-// blue green purple red silver yellow additional
-var COLORS = ['b', 'g', 'p', 'r', 's', 'y', 'z'];
-
 // not strictly necessary because the computer always wins in around 5
 // the original rules are for 8, 10, or 12 turns
 var MAX_ATTEMPTS = 10;
+
+// You can change the number of colors. Six is the original standard,
+// and seven is a fun addition.
+var COLORS = ['b', 'g', 'o', 'p', 'r', 's', 'y'];
 
 function allCombinations() {
     var combos = [];
@@ -228,6 +214,6 @@ console.time("Solve time");
 // solve(['p', 'r', 'y', 's']);
 // solve(['y', 'y', 'y', 'y']);
 // solve(['s', 'y', 's', 'y']);
-solve(['b', 'p', 'g', 'z']);
+solve(['b', 'p', 'g', 'o']);
 
 console.timeEnd("Solve time");
