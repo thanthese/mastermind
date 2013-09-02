@@ -4,7 +4,7 @@ Available colors are `blue`, `green`, `orange`, `purple`, `red`, `silver`, and `
 
 Algorithm used comes straight from [Donald Knuth][1].
 
-[1]: (http://en.wikipedia.org/wiki/Mastermind_(board_game)#Five-guess_algorithm)
+[1]: http://en.wikipedia.org/wiki/Mastermind_(board_game)#Five-guess_algorithm
 
 ## Future work
 
