@@ -158,6 +158,12 @@ function solve(answer) {
     }
 }
 
+function timeSolve(answer) {
+    console.time("Solve time");
+    solve(answer);
+    console.timeEnd("Solve time");
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // tests
 
@@ -205,15 +211,12 @@ function runAllTests() {
 ///////////////////////////////////////////////////////////////////////////////
 // main
 
-console.time("Solve time");
-
-// solve(['b', 'b', 's', 'b']);
-// solve(['g', 'r', 'y', 'b']);
-// solve(['r', 'y', 'p', 'r']);
-// solve(['s', 'p', 's', 'r']);
-// solve(['p', 'r', 'y', 's']);
-// solve(['y', 'y', 'y', 'y']);
-// solve(['s', 'y', 's', 'y']);
-solve(['b', 'p', 'g', 'o']);
-
-console.timeEnd("Solve time");
+// timeSolve(['b', 'b', 's', 'b']);
+// timeSolve(['g', 'r', 'y', 'b']);
+// timeSolve(['r', 'y', 'p', 'r']);
+// timeSolve(['s', 'p', 's', 'r']);
+// timeSolve(['p', 'r', 'y', 's']);
+// timeSolve(['y', 'y', 'y', 'y']);
+// timeSolve(['s', 'y', 's', 'y']);
+// timeSolve(['b', 'p', 'g', 'o']);
+timeSolve(['g', 'r', 's', 'y']);
