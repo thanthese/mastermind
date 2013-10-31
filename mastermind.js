@@ -209,6 +209,24 @@ function runAllTests() {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// calc user's pips
+
+// calc something like this from stdin
+//   > node mastermind.js bbbrgd rrrrgb
+
+function calcUsersPips() {
+  var code = process.argv[2].split('');
+  var guess = process.argv[3].split('');
+
+  if(code.length != guess.length) {
+    console.log("Code and guess not same length!");
+    return;
+  }
+
+  console.log(calcPips(code, guess));
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // main
 
 // timeSolve(['b', 'b', 's', 'b']);
@@ -219,4 +237,6 @@ function runAllTests() {
 // timeSolve(['y', 'y', 'y', 'y']);
 // timeSolve(['s', 'y', 's', 'y']);
 // timeSolve(['b', 'p', 'g', 'o']);
-timeSolve(['g', 'r', 's', 'y']);
+// timeSolve(['g', 'r', 's', 'y']);
+
+calcUsersPips()
