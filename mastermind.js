@@ -4,20 +4,24 @@ var MAX_ATTEMPTS = 10;
 
 // You can change the number of colors. Six is the original standard,
 // and seven is a fun addition.
-var COLORS = ['b', 'g', 'o', 'p', 'r', 's', 'y'];
+var COLORS = ['b', 'd', 'g', 'l', 'p', 'r', 'y'];
 
+// number of pegs to guess
+var SLOTS = 6;
+
+// return all combinations of COLORS for the number of SLOTS
 function allCombinations() {
-    var combos = [];
-    for (var w = 0; w < COLORS.length; ++w) {
-        for (var x = 0; x < COLORS.length; ++x) {
-            for (var y = 0; y < COLORS.length; ++y) {
-                for (var z = 0; z < COLORS.length; ++z) {
-                    combos.push([COLORS[w], COLORS[x], COLORS[y], COLORS[z]]);
-                }
-            }
-        }
+  var all = [[]];
+  for(var s = 0; s < SLOTS; ++s) {
+    var next = [];
+    for(var c = 0; c < COLORS.length; ++c) {
+      for(var a = 0; a < all.length; ++a) {
+        next.push(all[a].concat(COLORS[c]));
+      }
     }
-    return combos;
+    all = next;
+  }
+  return all;
 }
 
 function getObjectValues(obj) {
@@ -25,7 +29,7 @@ function getObjectValues(obj) {
 }
 
 Array.prototype.clone = function() {
-	return this.slice(0);
+    return this.slice(0);
 };
 
 Array.prototype.max = function() {
@@ -38,7 +42,7 @@ function Pips(black, white) {
 }
 
 Pips.prototype.solved = function() {
-    return this.black === 4 && this.white === 0;
+    return this.black === SLOTS && this.white === 0;
 };
 
 Pips.prototype.equals = function(pips) {
@@ -110,7 +114,7 @@ function nextGuess(candidates) {
     var lowest = {guess: guesses[0], score: 1000000};
     for(var i = 0; i < guesses.length; ++i) {
         var guess = guesses[i];
-        var score = calcGuessScore(candidates, guess);
+        var score = _calcGuessScore(candidates, guess);
         if(score < lowest.score) {
             lowest.score = score;
             lowest.guess = guess;
@@ -119,7 +123,7 @@ function nextGuess(candidates) {
     return lowest.guess;
 }
 
-function calcGuessScore(candidates, guess) {
+function _calcGuessScore(candidates, guess) {
     var pipsCounts = {};
     for(var i = 0; i < candidates.length; ++i) {
         var pipHash = calcPips(candidates[i], guess).toHash();
@@ -141,7 +145,8 @@ function solve(answer) {
     for(var i = 0; i < MAX_ATTEMPTS - 1 && !pips.solved(); ++i) {
         candidates = eliminateCandidates(candidates, guess, pips);
         if(candidates.length < 20) {
-            console.log("(" + prettyCandidates(candidates) + ") " + candidates.length);
+            console.log("(" + prettyCandidates(candidates) + ") "
+                + candidates.length);
         } else {
             console.log("Num of candidates: " + candidates.length);
         }
